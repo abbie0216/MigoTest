@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MigoTest</string>
+    <string name="text_status_loading">status loading</string>
 </resources>
