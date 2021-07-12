@@ -5,7 +5,6 @@ import android.net.NetworkRequest
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.ab.migotest.R
 import com.ab.migotest.databinding.ActivityMainBinding
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             openSelector(PassType.HOUR)
         }
 
-        viewModel.status.observe(this, Observer {
+        viewModel.status.observe(this, {
             when (it) {
                 is ApiResult.Success -> {
                     Timber.d("result: ${it.result}")
@@ -67,12 +66,14 @@ class MainActivity : AppCompatActivity() {
                     Timber.d("result: ${it.throwable}")
                     binding.tvStatus.text = it.throwable.message
                 }
+                else -> {
+                }
             }
         })
-        viewModel.passListData.observe(this, Observer {
+        viewModel.passListData.observe(this, {
             passAdapter.submitList(it)
         })
-        viewModel.passUpdated.observe(this, Observer {
+        viewModel.passUpdated.observe(this, {
             if (it) {
                 passAdapter.notifyDataSetChanged()
             }
@@ -123,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                 "${it.content.value} $type PASS"
             }.toMutableList() as ArrayList<String>,
 
-        )
+            )
         dialog.dialogFuncListener = GeneralDialogFuncListener(
             onConfirmClick = {
                 val selectedItem = data[dialog.getSelectItemIndex()]

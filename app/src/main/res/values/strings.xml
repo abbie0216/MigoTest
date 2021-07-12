@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MigoTest</string>
     <string name="text_status_loading">status loading</string>
+
+    <string name="text_item_pass_name">%d %s PASS</string>
+    <string name="text_item_pass_price">Rp %s</string>
+    <string name="text_item_separator_title">%s PASS</string>
+    <string name="text_item_btn_activated">ACTIVATED</string>
+    <string name="text_item_btn_buy">BUY</string>
+
+    <string name="text_pass_detail_status_activated">Pass Status: Activated</string>
+    <string name="text_pass_detail_status_unactivated">Pass Status: Unactivated</string>
+
 </resources>

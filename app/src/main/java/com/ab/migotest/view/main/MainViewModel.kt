@@ -68,7 +68,7 @@ class MainViewModel @ViewModelInject constructor(
                                     id = i.toLong(),
                                     type = type,
                                     value = i,
-                                    price = i * 100
+                                    price = i * 1000
                                 )
                             )
                         )
@@ -85,7 +85,7 @@ class MainViewModel @ViewModelInject constructor(
                                     id = (i + 10).toLong(),
                                     type = type,
                                     value = i,
-                                    price = i * 10
+                                    price = i * 200
                                 )
                             )
                         )

@@ -9,6 +9,7 @@ import com.ab.migotest.databinding.DialogPassDetailBinding
 import com.ab.migotest.model.db.vo.PassItem
 import com.ab.migotest.view.BaseDialogFragment
 import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailDialogFragment : BaseDialogFragment() {
 
@@ -39,8 +40,11 @@ class DetailDialogFragment : BaseDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val passItem = arguments?.getSerializable(KEY_DATA) as PassItem
-        binding.tvStatus.text = "Pass Status: ${if (passItem.isActivated) "Activated" else "Unactivated"}"
-        val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        binding.tvStatus.text = getString(
+            if (passItem.isActivated) R.string.text_pass_detail_status_activated
+            else R.string.text_pass_detail_status_unactivated
+        )
+        val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
         binding.tvCreateTime.text = dateFormat.format(passItem.createAt)
         if (passItem.isActivated) {
             binding.tvActivateTimeTitle.visibility = View.VISIBLE
